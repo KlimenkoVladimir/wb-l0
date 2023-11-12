@@ -1,0 +1,161 @@
+@font-face {
+  font-family: "Segoe UI";
+  font-weight: 400;
+  src: url("./fonts/SegoeUI-Regular.woff2"), url("./fonts/SegoeUI-Regular.woff");
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  font-weight: 600;
+  src: url("./fonts/SegoeUI-SemiBold.woff2"),
+    url("./fonts/SegoeUI-SemiBold.woff2");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Устанавливаем базовый шрифт и размер */
+body {
+  font-family: "Segoe UI";
+  font-size: 16px;
+  background-color: rgba(103, 37, 168, 1);
+}
+
+/* Убираем маркеры у списков */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Убираем декорации у ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Убираем выделение при клике */
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+input {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  text-align: inherit;
+  width: auto;
+}
+
+/* Убираем стандартные отступы у заголовков */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 88px;
+  padding: 16px 0px 16px 24px;
+  /* background-color: rgba(103, 37, 168, 1); */
+}
+
+.catalog-logo {
+  display: flex;
+  align-items: center;
+}
+
+.catalog {
+  margin-right: 16px;
+  padding: 4px 0px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.02rem;
+  text-align: left;
+  width: 106px;
+  height: 49px;
+  color: rgba(255, 255, 255, 1);
+  padding-top: 1px;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  width: 970px;
+  height: 48px;
+  padding: 0px 20px;
+  margin: 4px 32px;
+  border-radius: 36px;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.search input {
+  background-color: transparent;
+  padding: 10px 0px 14px 0px;
+}
+
+.search input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-icon {
+  background-color: transparent;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu p {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  text-align: center;
+  padding: 0px 0px 3.5px 0px;
+  color: rgba(255, 255, 255, 1);
+}
+
+.menu-profile {
+  width: 56px;
+  height: 56px;
+  margin-right: 20px;
+}
+
+.menu-basket {
+  width: 56px;
+  height: 56px;
+  margin: 0px 20px;
+}
+
+.menu-basket img {
+  padding: 1.5px 18px 0px 10px;
+}
+
+.shipping-rating {
+  display: flex;
+}
+
+.shipping-rating img {
+  margin-right: 4px;
+}
+
+.shipping-rating p {
+  margin-right: 8px;
+}
