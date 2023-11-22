@@ -1,0 +1,17 @@
+@media screen and (min-width: 1024px) and (max-width: 1399px) {
+  .container-left {
+    min-width: 640px;
+  }
+
+  .item-left {
+    width: 397px;
+  }
+
+  .total {
+    min-width: 303px;
+  }
+
+  .item {
+    justify-content: space-between;
+  }
+}

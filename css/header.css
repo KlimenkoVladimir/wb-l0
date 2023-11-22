@@ -80,6 +80,10 @@ h6 {
   padding: 4px 0px;
 }
 
+.catalog-mobile {
+  display: none;
+}
+
 .logo {
   font-size: 24px;
   font-weight: 600;
@@ -107,8 +111,10 @@ h6 {
 }
 
 .search input {
+  width: 100%;
   background-color: transparent;
   padding: 10px 0px 14px 0px;
+  outline: none;
 }
 
 .search input::placeholder {
@@ -148,14 +154,24 @@ h6 {
   padding: 1.5px 18px 0px 10px;
 }
 
-.shipping-rating {
-  display: flex;
-}
-
-.shipping-rating img {
-  margin-right: 4px;
-}
-
-.shipping-rating p {
-  margin-right: 8px;
+.basket-label {
+  position: absolute;
+  top: 12px;
+  right: 28px;
+  display: none;
+  width: 16px;
+  height: 16px;
+  padding: 0px 2px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 100%;
+  background-color: rgba(245, 81, 35, 1);
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 180% */
 }

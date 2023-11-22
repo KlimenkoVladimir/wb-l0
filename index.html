@@ -6,12 +6,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/basket.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/media-1024.css" />
+    <link rel="stylesheet" href="css/media-320.css" />
+    <link rel="stylesheet" href="css/modal.css" />
   </head>
   <body>
     <!-- HEADER -->
     <div class="header">
       <div class="catalog-logo">
         <img class="catalog" src="./images/icons/catalog.svg" alt="" />
+        <img class="catalog-mobile" src="./images/icons/catalog-mobile.svg" alt="" />
         <div class="logo">ТОВАРЫ И ТОЧКА</div>
       </div>
       <div class="search">
@@ -27,6 +32,7 @@
         </div>
         <div class="menu-basket">
           <img class="icon" src="./images/icons/basket.svg" alt="" />
+          <div class="basket-label">0</div>
           <p>Корзина</p>
         </div>
       </div>
@@ -37,19 +43,28 @@
         <div class="basket">
           <h2>Корзина</h2>
           <div class="all-checkbox">
-            <input type="checkbox" />
+            <input class="purple-checkbox" type="checkbox" />
             <p>Выбрать все</p>
-            <img src="./images/icons/hide.svg" alt="" />
+            <button  onclick="toggleSection('in-stock')">
+              <img class="in-stock-toggle-image" src="./images/icons/hide.svg" alt="" />
+            </button>
+            
+           
           </div>
           <div class="in-stock">
             <div class="items">
               <div class="item">
                 <div class="item-left">
                   <div class="item-checkbox-photo">
-                    <input type="checkbox" />
+                    <input class="checkbox purple-checkbox" type="checkbox"  />
+                    <div class="item-size-mobile">56</div>
                     <img src="images/photos/1.png" alt="" />
                   </div>
                   <div class="item-info">
+                    <div class="item-price-mobile">
+                      <div class="item-price-discount-mobile">522 <span> сом</span></div>
+                      <div class="item-price-original-mobile">1051 сом</div>
+                    </div>
                     <h3 class="item-name">Футболка UZcotton мужская</h3>
                     <div class="item-more">
                       <span class="item-color">Цвет: белый</span>
@@ -59,6 +74,11 @@
                     <div class="item-platform">
                       <p>OOO Вайлдберриз</p>
                       <img src="./images/icons/info.svg" alt="" />
+                      <div class="popup-info">
+                        <p>OOO «МЕГАПРОФСТИЛЬ»</p>
+                        <p>ОГРН: 5167746237148</p>
+                        <p>129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -71,27 +91,47 @@
                     </div>
                     <div class="item-remains">Осталось 2 шт.</div>
                     <div class="item-icons">
-                      <button>
-                        <img src="./images/icons/like.svg" alt="" />
+                      <button class="like-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 4.05857C2.26592 4.75224 1.76687 5.83284 1.99496 7.42928C2.22335 9.02783 3.26497 10.6852 4.80439 12.3478C6.25868 13.9184 8.10965 15.4437 9.99999 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.7351 10.6852 17.7767 9.02783 18.005 7.4293C18.2331 5.83285 17.734 4.75224 16.9659 4.05856C16.1767 3.34572 15.055 3 14 3C12.132 3 11.0924 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1583 5.04882 9.84169 5.04882 9.64643 4.85355C9.59644 4.80356 9.54185 4.7466 9.48227 4.68443C8.9076 4.08479 7.868 3 5.99999 3C4.94498 3 3.82328 3.34573 3.03399 4.05857ZM2.36374 3.31643C3.37372 2.40427 4.75205 2 5.99999 2C8.07126 2 9.34542 3.11257 9.99999 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2669 5.66715 18.995 7.5707C18.7233 9.47217 17.515 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87776 18.0333 9.69999 17.9C7.69356 16.3952 5.66446 14.7485 4.07063 13.0272C2.48506 11.3148 1.27668 9.47217 1.00501 7.57072C0.733043 5.66716 1.33253 4.24776 2.36374 3.31643Z" fill="black"/>
+                          </svg>
                       </button>
-                      <button>
-                        <img src="./images/icons/trash.svg" alt="" />
+                      <button class="delete-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                          </svg>
                       </button>
                     </div>
                   </div>
                   <div class="item-price">
-                    <div class="item-price-new">522 <span> сом</span></div>
-                    <div class="item-price-old">1051 сом</div>
+                    <div class="item-price-discount" >522 <span> сом</span></div>
+                    <div class="item-price-original" data-price="522">1051 сом</div>
+                    <div class="popup-discount">
+                      <div class="popup-row">
+                        <p>Скидка 55%</p>
+                        <h4>−300 сом</h4>
+                      </div>
+                      <div class="popup-row">
+                        <p>Скидка покупателя 10%</p>
+                        <h4>−30 сом</h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="item-left">
                   <div class="item-checkbox-photo">
-                    <input type="checkbox" />
+                    <input class="checkbox purple-checkbox" type="checkbox" />
                     <img src="images/photos/2.png" alt="" />
                   </div>
                   <div class="item-info">
+                    <div class="item-price-mobile">
+                      <div class="item-price-discount-mobile">2100000 <span> сом</span></div>
+                      <div class="item-price-original-mobile">2300047 сом</div>
+                    </div>
                     <h3 class="item-name">
                       Силиконовый чехол картхолдер (отверстия) для карт,
                       прозрачный кейс бампер на Apple iPhone XR, MobiSafe
@@ -103,6 +143,11 @@
                     <div class="item-platform">
                       <p>OOO Мегапрофстиль</p>
                       <img src="./images/icons/info.svg" alt="" />
+                      <div class="popup-info">
+                        <p>OOO «МЕГАПРОФСТИЛЬ»</p>
+                        <p>ОГРН: 5167746237148</p>
+                        <p>129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -115,28 +160,49 @@
                     </div>
                     <div class="item-icons">
                       <button>
-                        <img src="./images/icons/like.svg" alt="" />
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 4.05857C2.26592 4.75224 1.76687 5.83284 1.99496 7.42928C2.22335 9.02783 3.26497 10.6852 4.80439 12.3478C6.25868 13.9184 8.10965 15.4437 9.99999 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.7351 10.6852 17.7767 9.02783 18.005 7.4293C18.2331 5.83285 17.734 4.75224 16.9659 4.05856C16.1767 3.34572 15.055 3 14 3C12.132 3 11.0924 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1583 5.04882 9.84169 5.04882 9.64643 4.85355C9.59644 4.80356 9.54185 4.7466 9.48227 4.68443C8.9076 4.08479 7.868 3 5.99999 3C4.94498 3 3.82328 3.34573 3.03399 4.05857ZM2.36374 3.31643C3.37372 2.40427 4.75205 2 5.99999 2C8.07126 2 9.34542 3.11257 9.99999 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2669 5.66715 18.995 7.5707C18.7233 9.47217 17.515 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87776 18.0333 9.69999 17.9C7.69356 16.3952 5.66446 14.7485 4.07063 13.0272C2.48506 11.3148 1.27668 9.47217 1.00501 7.57072C0.733043 5.66716 1.33253 4.24776 2.36374 3.31643Z" fill="black"/>
+                          </svg>
                       </button>
-                      <button>
-                        <img src="./images/icons/trash.svg" alt="" />
+                      <button class="delete-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                          </svg>
                       </button>
                     </div>
                   </div>
                   <div class="item-price">
-                    <div class="item-price-new">
-                      2 100 047 <span> сом</span>
+                    <div class="item-price-discount" >
+                      1890000 <span> сом</span>
                     </div>
-                    <div class="item-price-old">2 300 047 сом</div>
+                    <div class="item-price-original" data-price="10500">2 100000 сом</div>
+                    <div class="popup-discount">
+                      <div class="popup-row">
+                        <p>Скидка 55%</p>
+                        <h4>−300 сом</h4>
+                      </div>
+                      <div class="popup-row">
+                        <p>Скидка покупателя 10%</p>
+                        <h4>−30 сом</h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="item">
                 <div class="item-left">
                   <div class="item-checkbox-photo">
-                    <input type="checkbox" />
+                    <input class="checkbox purple-checkbox" type="checkbox" />
                     <img src="images/photos/3.png" alt="" />
                   </div>
                   <div class="item-info">
+                    <div class="item-price-mobile">
+                      <div class="item-price-discount-mobile">494 <span> сом</span></div>
+                      <div class="item-price-original-mobile">900 сом</div>
+                      
+                    </div>
                     <h3 class="item-name">
                       Карандаши цветные Faber-Castell "Замок", набор 24 цвета,
                       заточенные, шестигранные, Faber-Castell
@@ -145,6 +211,11 @@
                     <div class="item-platform">
                       <p>OOO Вайлдберриз</p>
                       <img src="./images/icons/info.svg" alt="" />
+                      <div class="popup-info">
+                        <p>OOO «МЕГАПРОФСТИЛЬ»</p>
+                        <p>ОГРН: 5167746237148</p>
+                        <p>129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -157,27 +228,46 @@
                     </div>
                     <div class="item-remains">Осталось 2 шт.</div>
                     <div class="item-icons">
-                      <button>
-                        <img src="./images/icons/like.svg" alt="" />
+                      <button class="like-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 4.05857C2.26592 4.75224 1.76687 5.83284 1.99496 7.42928C2.22335 9.02783 3.26497 10.6852 4.80439 12.3478C6.25868 13.9184 8.10965 15.4437 9.99999 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.7351 10.6852 17.7767 9.02783 18.005 7.4293C18.2331 5.83285 17.734 4.75224 16.9659 4.05856C16.1767 3.34572 15.055 3 14 3C12.132 3 11.0924 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1583 5.04882 9.84169 5.04882 9.64643 4.85355C9.59644 4.80356 9.54185 4.7466 9.48227 4.68443C8.9076 4.08479 7.868 3 5.99999 3C4.94498 3 3.82328 3.34573 3.03399 4.05857ZM2.36374 3.31643C3.37372 2.40427 4.75205 2 5.99999 2C8.07126 2 9.34542 3.11257 9.99999 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2669 5.66715 18.995 7.5707C18.7233 9.47217 17.515 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87776 18.0333 9.69999 17.9C7.69356 16.3952 5.66446 14.7485 4.07063 13.0272C2.48506 11.3148 1.27668 9.47217 1.00501 7.57072C0.733043 5.66716 1.33253 4.24776 2.36374 3.31643Z" fill="black"/>
+                          </svg>
                       </button>
-                      <button>
-                        <img src="./images/icons/trash.svg" alt="" />
+                      <button class="delete-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                          </svg>
                       </button>
                     </div>
                   </div>
                   <div class="item-price">
-                    <div class="item-price-new">494 <span> сом</span></div>
-                    <div class="item-price-old">950 сом</div>
+                    <div class="item-price-discount" data-price="247">247 <span> сом</span></div>
+                    <div class="item-price-original" data-price="247">950 сом</div>
+                    <div class="popup-discount">
+                      <div class="popup-row">
+                        <p>Скидка 55%</p>
+                        <h4>−300 сом</h4>
+                      </div>
+                      <div class="popup-row">
+                        <p>Скидка покупателя 10%</p>
+                        <h4>−30 сом</h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="out-of-stock">
-            <div class="out-of-stock-header">
-              <h3>Отсутствуют · 3 товара</h3>
-              <img src="./images/icons/hide.svg" alt="" />
-            </div>
+          <div class="out-of-stock-header">
+            <h3>Отсутствуют · 3 товара</h3>
+            <button onclick="toggleSection('out-of-stock')" >
+              <img class="out-of-stock-toggle-image" src="./images/icons/hide.svg" alt="" />
+            </button>
+          </div>
+          <div class="out-of-stock"  >
+            
             <div class="items">
               <div class="item">
                 <div class="item-left">
@@ -193,13 +283,19 @@
                   </div>
                 </div>
                 <div class="item-right">
-                  <div class="item-status">
+                  <div class="item-status item-status-out">
                     <div class="item-icons">
-                      <button>
-                        <img src="./images/icons/like.svg" alt="" />
+                      <button class="like-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 4.05857C2.26592 4.75224 1.76687 5.83284 1.99496 7.42928C2.22335 9.02783 3.26497 10.6852 4.80439 12.3478C6.25868 13.9184 8.10965 15.4437 9.99999 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.7351 10.6852 17.7767 9.02783 18.005 7.4293C18.2331 5.83285 17.734 4.75224 16.9659 4.05856C16.1767 3.34572 15.055 3 14 3C12.132 3 11.0924 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1583 5.04882 9.84169 5.04882 9.64643 4.85355C9.59644 4.80356 9.54185 4.7466 9.48227 4.68443C8.9076 4.08479 7.868 3 5.99999 3C4.94498 3 3.82328 3.34573 3.03399 4.05857ZM2.36374 3.31643C3.37372 2.40427 4.75205 2 5.99999 2C8.07126 2 9.34542 3.11257 9.99999 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2669 5.66715 18.995 7.5707C18.7233 9.47217 17.515 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87776 18.0333 9.69999 17.9C7.69356 16.3952 5.66446 14.7485 4.07063 13.0272C2.48506 11.3148 1.27668 9.47217 1.00501 7.57072C0.733043 5.66716 1.33253 4.24776 2.36374 3.31643Z" fill="black"/>
+                          </svg>
                       </button>
-                      <button>
-                        <img src="./images/icons/trash.svg" alt="" />
+                      <button class="delete-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                          </svg>
                       </button>
                     </div>
                   </div>
@@ -221,13 +317,19 @@
                   </div>
                 </div>
                 <div class="item-right">
-                  <div class="item-status">
+                  <div class="item-status item-status-out">
                     <div class="item-icons">
-                      <button>
-                        <img src="./images/icons/like.svg" alt="" />
+                      <button class="like-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 4.05857C2.26592 4.75224 1.76687 5.83284 1.99496 7.42928C2.22335 9.02783 3.26497 10.6852 4.80439 12.3478C6.25868 13.9184 8.10965 15.4437 9.99999 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.7351 10.6852 17.7767 9.02783 18.005 7.4293C18.2331 5.83285 17.734 4.75224 16.9659 4.05856C16.1767 3.34572 15.055 3 14 3C12.132 3 11.0924 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1583 5.04882 9.84169 5.04882 9.64643 4.85355C9.59644 4.80356 9.54185 4.7466 9.48227 4.68443C8.9076 4.08479 7.868 3 5.99999 3C4.94498 3 3.82328 3.34573 3.03399 4.05857ZM2.36374 3.31643C3.37372 2.40427 4.75205 2 5.99999 2C8.07126 2 9.34542 3.11257 9.99999 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2669 5.66715 18.995 7.5707C18.7233 9.47217 17.515 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87776 18.0333 9.69999 17.9C7.69356 16.3952 5.66446 14.7485 4.07063 13.0272C2.48506 11.3148 1.27668 9.47217 1.00501 7.57072C0.733043 5.66716 1.33253 4.24776 2.36374 3.31643Z" fill="black"/>
+                          </svg>
                       </button>
-                      <button>
-                        <img src="./images/icons/trash.svg" alt="" />
+                      <button class="delete-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                          </svg>
                       </button>
                     </div>
                   </div>
@@ -246,13 +348,19 @@
                   </div>
                 </div>
                 <div class="item-right">
-                  <div class="item-status">
+                  <div class="item-status item-status-out">
                     <div class="item-icons">
-                      <button>
-                        <img src="./images/icons/like.svg" alt="" />
+                      <button class="like-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.03399 4.05857C2.26592 4.75224 1.76687 5.83284 1.99496 7.42928C2.22335 9.02783 3.26497 10.6852 4.80439 12.3478C6.25868 13.9184 8.10965 15.4437 9.99999 16.874C11.8903 15.4437 13.7413 13.9184 15.1956 12.3478C16.7351 10.6852 17.7767 9.02783 18.005 7.4293C18.2331 5.83285 17.734 4.75224 16.9659 4.05856C16.1767 3.34572 15.055 3 14 3C12.132 3 11.0924 4.08479 10.5177 4.68443C10.4581 4.7466 10.4035 4.80356 10.3535 4.85355C10.1583 5.04882 9.84169 5.04882 9.64643 4.85355C9.59644 4.80356 9.54185 4.7466 9.48227 4.68443C8.9076 4.08479 7.868 3 5.99999 3C4.94498 3 3.82328 3.34573 3.03399 4.05857ZM2.36374 3.31643C3.37372 2.40427 4.75205 2 5.99999 2C8.07126 2 9.34542 3.11257 9.99999 3.77862C10.6545 3.11257 11.9287 2 14 2C15.2479 2 16.6262 2.40428 17.6362 3.31644C18.6674 4.24776 19.2669 5.66715 18.995 7.5707C18.7233 9.47217 17.515 11.3148 15.9294 13.0272C14.3355 14.7486 12.3064 16.3952 10.3 17.9C10.1222 18.0333 9.87776 18.0333 9.69999 17.9C7.69356 16.3952 5.66446 14.7485 4.07063 13.0272C2.48506 11.3148 1.27668 9.47217 1.00501 7.57072C0.733043 5.66716 1.33253 4.24776 2.36374 3.31643Z" fill="black"/>
+                          </svg>
                       </button>
-                      <button>
-                        <img src="./images/icons/trash.svg" alt="" />
+                      <button class="delete-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                          </svg>
                       </button>
                     </div>
                   </div>
@@ -263,45 +371,293 @@
           <div class="shipping">
             <div class="shipping-header">
               <h3>Способ доставки</h3>
-              <button>Изменить</button>
+              <button class="open-shipping">Изменить</button>
             </div>
-            <div class="shipping-container">
-              <div class="shipping-left">
-                <p>Пункт выдачи</p>
-                <p>Стоимость доставки</p>
-                <p>5—6 февраля</p>
-                <p>7—8 февраля</p>
-              </div>
-              <div class="shipping-right">
-                <p>Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
-                <div class="shipping-rating">
-                  <img src="images/icons/Stars.svg" alt="" />
-                  <p>4.99</p>
-                  <p>Ежедневно с 10 до 21</p>
+            <div class="shipping-container">            
+                <h4>Пункт выдачи</h4>
+                <div>
+                  <p id="shipping-address-1" class="shipping-address">
+                    Бишкек, улица Ахматбека Суюмбаева, 12/1
+                  </p>
+                  <div class="shipping-rating">
+                    <img src="images/icons/Stars.svg" alt="" />
+                    <p>4.99</p>
+                    <p>Ежедневно с 10 до 21</p>
+                  </div>
                 </div>
-                <p>Бесплатно</p>
-                <div class="shipping-products">
+            
+            
+             
+              <h4>Стоимость доставки</h4>
+              <p class="shipping-price">Бесплатно</p>
+              <h4>5—6 февраля</h4>
+              <div class="shipping-products">
+                <div class="shipping-product">
                   <img src="images/photos/1.png" alt="" />
-                  <img src="images/photos/2.png" alt="" />
-                  <img src="images/photos/3.png" alt="" />
+                  <div class="product-label">0</div>
                 </div>
-                <div class="shipping-products">
+                <div class="shipping-product">
                   <img src="images/photos/2.png" alt="" />
+                  <div class="product-label">0</div>
+                </div>
+                <div class="shipping-product">
+                  <img src="images/photos/3.png" alt="" />
+                  <div class="product-label">0</div>
+                </div>
+              </div>
+              <h4>7—8 февраля</h4>
+              <div class="shipping-products">
+                <div id="date-2" class="shipping-product">
+                  <img src="images/photos/2.png" alt="" />
+                  <div id="data-2-label" class="product-label">0</div>
                 </div>
               </div>
             </div>
+          
             <div class="shipping-return">
-              <img src="" alt="" />
+              <img src="images/icons/price shipping.svg" alt="" />
               <p>
-                Обратная доставка товаров на склад при отказе -
-                <span>бесплатно</span>
+                Обратная доставка товаров на склад при отказе —
+                <span class="shipping-free">бесплатно</span>
               </p>
+              <div class="popup-free">
+                <p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p>
+              </div>
             </div>
+          </div>
+          <div class="payment">
+            <div class="shipping-header">
+              <h3>Способ оплаты</h3>
+              <button class="open-payment">Изменить</button>
+            </div>
+            <div class="payment-card">
+              <img id="paymentImg1" src="images/icons/mir.svg" alt="" />
+              <p>1234 56•• •••• 1234</p>
+              <p>01/30</p>
+            </div>
+            <p class="debit-later">Спишем оплату с карты при получении</p>
+          </div>
+          <div class="receiver">
+            <div class="shipping-header">
+              <h3>Получатель</h3>
+            </div>
+            <form id="orderForm" action="" >
+              <div class="receiver-inputs inputs-row-1">
+            
+                <div class="receiver-input">
+                  <label for="firstName">Имя</label>
+                  <input  type="text" id="firstName" placeholder="Имя" />
+                  <div class="input-line"></div>
+                  <div class="error-message" id="firstNameError">Укажите имя</div>
+                </div>
+                <div class="receiver-input">
+                  <label for="lastName">Фамилия</label>
+                  <input  type="text" id="lastName" placeholder="Фамилия" />
+                  <div class="input-line"></div>
+                  <div class="error-message" id="lastNameError">Введите фамилию</div>
+                </div>
+              </div>
+              <div class="receiver-inputs">
+                <div class="receiver-input">
+                  <label for="email">Электронная почта</label>
+                  <input type="text" id="email" placeholder="Электронная почта" />
+                  <div class="input-line"></div>
+                  <div class="error-message" id="emailError">Проверьте адрес электронной почты</div>
+                  <!-- <div class="error-message" id="emailError2">Укажите электронную почту</div> -->
+                </div>
+                <div class="receiver-input">
+                  <label for="phone">Телефон</label>
+                  <input type="text" id="phone" placeholder="Телефон" />
+                  <div class="input-line"></div>
+                  <div class="error-message" id="phoneError">Формат: +9 999 999 99 99</div>
+                  <!-- <div class="error-message" id="phoneError2">Укажите номер телефона</div> -->
+                </div>
+                <div class="receiver-input">
+                  <label for="inn">ИНН</label>
+                  <input type="text" id="inn" placeholder="ИНН" />
+                  <div class="input-line"></div>
+                  <div class="error-message" id="innError">Проверьте ИНН</div>
+                  <div id="innUnder">Для таможенного оформления</div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <div class="container-right"></div>
+      <div class="total">
+        <div class="total-price">
+          <div class="total-row">
+            <h2>Итого</h2>
+            <h3 id="total-discount-price">0 сом</h3>
+          </div>
+          <div class="total-row">
+            <p id="total-quantity">0 товаров</p>
+            <p id="total-original-price">0 сом</p>
+          </div>
+          <div class="total-row">
+            <p>Скидка</p>
+            <p id="total-discount">0 сом</p>
+          </div>
+          <div class="total-row">
+            <p>Доставка</p>
+            <p>Бесплатно</p>
+          </div>
+        </div>
+        <div class="total-shipping">
+          <div class="total-header">
+            <h3>Доставка в пункт выдачи</h3>
+            <button class="open-shipping">
+              <img src="images/icons/edit.svg" alt="">
+            </button>
+          </div>
+          
+          <div class="total-shipping-address">
+            <p id="shipping-address-2">Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+          <span>5–8 фев</span>
+          </div>
+          <div class="total-shipping-return">
+            <img src="images/icons/price shipping.svg" alt="" />
+            <p>
+              Обратная доставка товаров на склад при отказе —
+              <span class="shipping-free">бесплатно</span>
+            </p>
+            <div class="popup-free">
+              <p>Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно</p>
+            </div>
+          </div>
+        </div>
+        <div class="total-payment">
+          <div class="total-header">
+            <h3>Оплата картой</h3>
+            <button class="open-payment">
+              <img src="images/icons/edit.svg" alt="">
+            </button>
+           
+          </div>
+          <div class="total-payment-card">
+            <img id="paymentImg2" src="images/icons/mir.svg" alt="" />
+            <p>1234 12•• •••• 1234</p> 
+          </div>
+          <div class="debit">
+            <div class="debit-now">
+              <input id="debitCheckbox" class="purple-checkbox" type="checkbox">
+              <p>Списать оплату сразу</p>
+            </div>
+            <p class="debit-later">Спишем оплату с карты при получении</p>
+          </div>
+        </div>
+        <div class="total-button">
+          <button id="orderButton">Заказать</button>
+          <div class="agree">
+            <input type="checkbox">
+            <p>Соглашаюсь с правилами пользования торговой площадкой и возврата</p>
+          </div>
+
+        </div>
+        </div>
+      </div>
     </div>
-    <div class="footer"></div>
+    <div class="footer">
+      <p>© 2022 ООО «Товары и точка»</p>
+    </div>
+    <div id="modal-payment" class="modal">
+      <div class="modal-payment-wrapper">
+        <div class="modal-header">
+          <h3>Способ оплаты</h3>
+          <button id="close-payment"  >
+            <img src="./images/icons/search-close.svg" alt="">
+          </button>
+        </div>
+        <div class="modal-content-payment">
+          <div class="modal-item">
+            <input class="purple-radio" type="radio" name="paymentMethod">
+            <img src="./images/icons/mir.svg" alt="">
+            <p>1234 56•• •••• 1234</p>
+          </div>
+          <div class="modal-item">
+            <input class="purple-radio" type="radio" name="paymentMethod">
+            <img src="./images/icons/visa.svg" alt="">
+            <p>1234 56•• •••• 1234</p>
+          </div>
+          <div class="modal-item">
+            <input class="purple-radio" type="radio" name="paymentMethod">
+            <img src="./images/icons/mastercard.svg" alt="">
+            <p>1234 56•• •••• 1234</p>
+          </div>
+          <div class="modal-item">
+            <input class="purple-radio" type="radio" name="paymentMethod">
+            <img src="./images/icons/maestro.svg" alt="">
+            <p>1234 56•• •••• 1234</p>
+          </div>
+        </div>
+        <div class="modal-header">
+          <button id="choose-payment" class="choose-button">Выбрать</button>
+        </div>
+      </div>
+    </div>
+    <div id="modal-shipping" class="modal">
+      <div class="modal-shipping-wrapper">
+        <div class="modal-header">
+          <h3>Способ оплаты</h3>
+          <button id="close-shipping"  >
+            <img src="./images/icons/search-close.svg" alt="">
+          </button>
+        </div>
+        <div class="modal-content-shipping">
+          <div class="shippingMethod">
+            <button>В пункт выдачи</button>
+            <button class="active">Курьером</button>
+          </div>
+          <h4>Мои адреса</h4>
+          <div class="modal-item">
+            <input class="purple-radio" type="radio" name="shippingAddress">
+            <p>Бишкек, улица Табышалиева, 57</p>
+            <button class="delete-address">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                </svg>
+            </button>
+           
+          </div>
+          <div class="modal-item">
+            <input class="purple-radio" type="radio" name="shippingAddress">        
+            <p>Бишкек, улица Жукеева-Пудовкина, 77/1</p>
+            <button class="delete-address">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                </svg>
+            </button>
+          </div>
+          <div class="modal-item">
+            <input class="purple-radio" type="radio" name="shippingAddress">
+            <p>Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1</p>
+            <button class="delete-address">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5C2.5 4.72386 2.72386 4.5 3 4.5H17C17.2761 4.5 17.5 4.72386 17.5 5C17.5 5.27614 17.2761 5.5 17 5.5H3C2.72386 5.5 2.5 5.27614 2.5 5Z" fill="black"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.4584 4.5H16.5059L15.6411 15.6926C15.5405 16.9947 14.4546 18 13.1486 18H6.84639C5.54299 18 4.45829 16.9986 4.35435 15.6994L3.4584 4.5ZM4.5416 5.5L5.35117 15.6196C5.41353 16.3992 6.06435 17 6.84639 17H13.1486C13.9322 17 14.5837 16.3968 14.6441 15.6155L15.4256 5.5H4.5416Z" fill="black"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M13 5.5H7V3.46875C7 2.65758 7.65758 2 8.46875 2H11.5312C12.3424 2 13 2.65758 13 3.46875V5.5ZM8.46875 3C8.20987 3 8 3.20987 8 3.46875V4.5H12V3.46875C12 3.20987 11.7901 3 11.5312 3H8.46875Z" fill="black"/>
+                </svg>
+            </button>       
+          </div>
+        </div>
+        <div class="modal-header">
+          <button id="choose-shipping" class="choose-button">Выбрать</button>
+        </div>
+        
+        
+      </div>
+    </div>
+    <script src="./index.js"></script>
+    <script src="./togleSection.js"></script>
+    <script src="./popup.js"></script>
+    <script src="./modal.js"></script>
+    <script src="./payment.js"></script>
+    <script src="./shipping.js"></script>
+    <script src="./validation.js"></script>
+
   </body>
 </html>

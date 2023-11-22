@@ -1,0 +1,158 @@
+/* Стили для модального окна */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-payment-wrapper {
+  width: 400px;
+  height: 408px;
+  margin: 10% auto;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+.modal-shipping-wrapper {
+  width: 500px;
+  height: 408px;
+  margin: 10% auto;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 24px 13px 24px;
+}
+
+.modal-header button {
+  cursor: pointer;
+}
+
+.modal-content-payment {
+  padding: 0px 22px 107px 22px;
+}
+
+.modal-content-shipping {
+  padding: 0px 22px 17px 22px;
+}
+
+.modal-content-shipping h4 {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 123.077% */
+  margin-bottom: 12px;
+}
+
+.modal-item {
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.modal-item input {
+  margin-right: 8px;
+}
+
+.modal-item img {
+  margin-right: 4px;
+}
+
+.modal-item p {
+  max-width: 400px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+.modal-item button {
+  margin-left: auto;
+}
+
+.modal-item svg:hover path {
+  fill: rgba(245, 81, 35, 1);
+}
+
+.choose-button {
+  height: 44px;
+  padding: 0px 48px;
+  color: #fff;
+  border-radius: 8px;
+  background: #cb11ab;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.08);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+}
+
+.shippingMethod {
+  display: flex;
+  justify-content: space-between;
+  width: 456px;
+  padding-bottom: 2px;
+  margin-bottom: 24px;
+}
+
+.shippingMethod button {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 123.077% */
+  width: 224px;
+  height: 34px;
+  border-radius: 20px;
+  border: 2px solid rgba(203, 17, 171, 0.15);
+}
+
+.shippingMethod .active {
+  border-radius: 24px;
+  border: 2px solid #cb11ab;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1023px) {
+  .modal-payment-wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    border-radius: 0px;
+  }
+
+  .modal-shipping-wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    border-radius: 0px;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 11px 13px 16px;
+  }
+
+  .modal-content-payment {
+    padding: 0px 16px;
+  }
+
+  .modal-content-shipping {
+    padding: 0px 14px;
+  }
+
+  .shippingMethod {
+    width: 320px;
+    padding: 0px 2px;
+  }
+
+  .shippingMethod button {
+    width: 140px;
+    height: 38px;
+  }
+}
