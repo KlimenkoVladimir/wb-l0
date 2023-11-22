@@ -63,7 +63,6 @@ function validateInput(input, errorElement) {
   } else {
     input.classList.remove("error");
     inputLine.style.backgroundColor = "#000";
-    innUnder.style.display = "block";
     errorElement.textContent = "";
     errorElement.style.display = "none";
     return true;
